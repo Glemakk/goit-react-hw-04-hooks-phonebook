@@ -8,4 +8,5 @@ transition: 100ms;
   &:hover {
 
     transform: scale(1.1);
+    color: red;
 `
