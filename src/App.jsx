@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import ContactForm from './components/ContactForm'
 import ContactList from './components/ContactList'
 import Filter from './components/Filter'
@@ -45,8 +48,9 @@ export default class App extends Component {
     )
 
     findContact
-      ? alert(`${name} is already in contacts`)
-      : this.setState((prevState) => ({
+      ? toast.warn(`${name} is already in contacts`)
+      : // alert(`${name} is already in contacts`)
+        this.setState((prevState) => ({
           contacts: [...prevState.contacts, newContact],
         }))
   }
@@ -78,6 +82,7 @@ export default class App extends Component {
         <h2>Contacts</h2>
         <Filter onChange={this.handleChange} filter={filter} />
         <ContactList contacts={visibleContacts} onClick={this.deleteContact} />
+        <ToastContainer position="top-center" autoClose={2000} />
       </Container>
     )
   }
